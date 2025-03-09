@@ -1,0 +1,377 @@
+<!--Done By,Samanvitha Matta,G01252738-->
+<!--Akshaya Reddy Dundigalla,G01482843-->
+<!--Tarun Naga Sai Chadaram,G01445928-->
+<!--This the main index page for the assignment 2 ,where all the contents of the form will be together with a few form vaildations part-->>
+<!--Bootstrap-styled survey form for the computer science department with fields for name, address, contact information, and feedback,JavaScript manages the following features: form submission, reset functionality, interactive user feedback, and raffle validation using a randomized winning number-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SWE 645 HW1 Survey Form</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+
+        /* Header with logos and centered text */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #006633;
+            padding: 20px;
+            color: #ffcc33;
+            border: 5px solid #ffcc33 ; 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Custom Box Shadow */
+        }
+
+        /* Logo Image Styling */
+        .logo img {
+            max-width: 100px;
+            height: auto;
+        }
+
+        /* Centered Title */
+        .header-title {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            flex-grow: 1;
+        }
+
+        /* Ensure title is centered */
+        .header-title-center {
+            flex-grow: 2;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Image of the building Custom Class*/
+        .mason-image {
+            width: 100%;
+            max-height: 500px;
+            margin: 20px 0;
+            object-fit: cover;
+        }
+
+        h2 {
+            color: #ffcc33;
+            text-align: center;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+
+        h3 {
+            color: #ffcc33;
+            margin: 20px 0;
+            font-weight: lighter;
+        }
+
+        h4 {
+            color: #ffcc33;
+            margin: 20px 0;
+            font-weight: lighter;
+        }
+
+        .form-legend {
+            font-weight: normal;
+            font-size: 1rem; 
+            color: #212529;  
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        .form-label {
+            font-weight: normal;
+            font-size: 1rem;
+            color: #212529; 
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .btn {
+            color: #ffcc33; 
+            background-color: #006633;
+            width: 200px;
+            height: 50px;
+        }
+
+        .error{
+            color:red;
+        }
+
+        .winner{
+            color:green;
+        }
+        
+        .required::after {
+            content: " *";
+            color: red;
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <!-- Header with GMU and CS Department Logos and Department Name -->
+    <header>
+        <!-- GMU Logo on the left -->
+        <div class="logo">
+            <img src="GMUlogo.jpg" alt="George Mason University Logo">
+        </div>
+        
+        <!-- Department Name in the center -->
+        <div class="header-title-center">
+            <div class="header-title">
+                George Mason University<br>Computer Science Department
+            </div>
+        </div>
+        
+        <!-- CS Department Logo on the right -->
+        <div class="logo">
+            <img src="CSlogo.jpg" alt="CS Department Logo">
+        </div>
+    </header>
+
+    <div class="container mt-5">
+        <!-- Survey Form -->
+        <h2>Computer Science Department Survey</h2>
+        <p1>BY<br></p1>
+        <p1>Samanvitha Matta,G01252738<br></p1>
+        <p1>Akshaya Reddy Dundigalla,G01482843<br></p1>
+        <p1>Tarun Naga Sai Chadaram,G01445928<br></p1>
+
+        <!-- Image of the GMU Building -->
+        <img src="Mason.jpg" alt="George Mason University Building" class="mason-image">
+
+
+        <form autocomplete="on">
+            <div class="mb-4 mt-4">
+                <label for="firstname" class="form-label required">First Name</label>
+                <input type="text" class="form-control" id="fname" name="fname" placeholder="Enter your first name" required autofocus>
+            </div>
+
+            <div class="mb-4 mt-4">
+                <label for="lastname" class="form-label required">Last Name</label>
+                <input type="text" class="form-control" id="lname" name="lname" placeholder="Enter your last name" required>
+            </div>
+
+            <div class="mb-4 mt-4">
+                <label for="street" class="form-label required">Street Address</label>
+                <input type="text" class="form-control" id="street" name="street" placeholder="Enter your first line of address" required>
+            </div>
+
+            <div class="mb-4 mt-4">
+                <label for="city" class="form-label required">City</label>
+                <input type="text" class="form-control" id="city" name="city" placeholder="Enter your city" required>
+            </div>
+
+            <div class="mb-4 mt-4">
+                <label for="state" class="form-label required">State</label>
+                <input type="text" class="form-control" id="state" name="state" placeholder="State" required>
+            </div>
+
+            <div class="mb-4 mt-4">
+                <label for="zip" class="form-label required">Zip Code</label>
+                <input type="text" class="form-control" id="zip" name="zip" placeholder="12345" required pattern="\d{5}">
+            </div>
+
+            <div class="mb-4 mt-4">
+                <label for="email" class="form-label required">Email Address</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="id@example.com" required>
+            </div>
+
+            <div class="mb-4 mt-4">
+                <label for="phone" class="form-label required">Telephone Number</label>
+                <input type="tel" class="form-control" id="phone" name="phone" placeholder="123-456-7890" required pattern="\d{3}[-]\d{3}[-]\d{4}">
+            </div>
+
+            <div class="mb-4 mt-4">
+                <label for="survey-date" class="form-label required">Date of Survey</label>
+                <input type="date" class="form-control" id="survey-date" name="survey-date" required>
+            </div>
+
+
+
+            <!-- Checkboxes for Campus Feedback -->
+            <fieldset class="mb-4 mt-4">
+                <legend class="form-legend">What did you like the most about George Mason University campus during your visit today? Select all the options that apply.</legend>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="students" name="likes" value="students">
+                    <label class="form-check-label" for="students">Students</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="location" name="likes" value="location">
+                    <label class="form-check-label" for="location">Location</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="campus" name="likes" value="campus">
+                    <label class="form-check-label" for="campus">Campus</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="atmosphere" name="likes" value="atmosphere">
+                    <label class="form-check-label" for="atmosphere">Atmosphere</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="dorms" name="likes" value="dorms">
+                    <label class="form-check-label" for="dorms">Dorm Rooms</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="sports" name="likes" value="sports">
+                    <label class="form-check-label" for="sports">Sports</label>
+                </div>
+            </fieldset>
+
+            <!-- Radio Buttons for Interest Source -->
+            <fieldset class="mb-4 mt-4">
+                <legend class="form-legend">What interested you to come visit the George Mason University campus today?</legend>
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" id="friends" name="interest_source" value="friends" required>
+                    <label class="form-check-label" for="friends">Friends</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" id="tv" name="interest_source" value="television" required>
+                    <label class="form-check-label" for="tv">Television</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" id="internet" name="interest_source" value="internet" required>
+                    <label class="form-check-label" for="internet">Internet</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" id="other" name="interest_source" value="other" required>
+                    <label class="form-check-label" for="other">Other</label>
+                </div>
+            </fieldset>
+
+            <!-- Likelihood of Recommendation Dropdown -->
+            <div class="mb-4 mt-4">
+                <label for="recommend" class="form-label required">Likelihood of Recommending George Mason University</label>
+                <select class="form-select" id="recommend" name="recommend" required>
+                    <option value="" disabled selected>Select an option</option>
+                    <option value="very_likely">Very Likely</option>
+                    <option value="likely">Likely</option>
+                    <option value="unlikely">Unlikely</option>
+                </select>
+            </div>
+
+            <!-- Raffle Field -->
+            <div class="mb-4 mt-4">
+                <label for="firstname" class="form-label required">Raffle</label>
+                <input type="text" class="form-control" id="raffle" name="raffle" onblur="handleRaffle()" placeholder="Enter 10 numbers (comma separated, 1-100)" required autofocus>
+
+                <p id="winnerMessage" class="winner"></p>
+                <p id="errorMessage" class="error"></p>
+            </div>
+
+            <!-- Additional Comments -->
+            <div class="mb-4 mt-4">
+                <label for="comments" class="form-label required">Additional Comments</label>
+                <textarea class="form-control" id="comments" name="comments" rows="4" placeholder="Enter any additional comments..." required></textarea>
+            </div>
+
+            <!-- Submit Button and Cancel Buttons -->
+            <div class="mb-3 mt-4 text-center">
+                <button type="submit" class="btn" onclick="submitForm()">Submit Survey</button>
+                <button type="button" class="btn" onclick="clearForm()">Cancel Survey</button>
+            </div>
+        </form>
+    </div>
+
+    <script type="text/javascript">
+        
+        function handleRaffle() 
+        {
+            const dataField = document.getElementById('raffle').value;
+            const errorMessage = document.getElementById('errorMessage');
+            const winnerMessage = document.getElementById('winnerMessage');
+
+            errorMessage.textContent = '';
+            winnerMessage.textContent = '';
+
+            // Split the input string into an array of numbers
+            const numbers = dataField.split(',').map(num => num.trim());
+
+            // Check if there are exactly 10 numbers
+            if (numbers.length !== 10) {
+                errorMessage.textContent = "Please enter exactly 10 numbers.";
+                return;
+            }
+
+            // Convert to numbers and validate range
+            const validNumbers = numbers.map(Number).filter(num => !isNaN(num) && num >= 1 && num <= 100);
+
+            // Check if all numbers are valid
+            if (validNumbers.length !== 10) {
+                errorMessage.textContent = "All values must be numbers between 1 and 100.";
+                return;
+            }
+            else{
+                // Generate a random winning number between 1 and 100
+                const winningNumber = Math.floor(Math.random() * 100) + 1;
+
+                // Check if any of the user's numbers match the winning number
+                const isWinner = validNumbers.includes(winningNumber);
+
+                // Display result
+                if (isWinner) {
+                    winnerMessage.textContent = `You won a free movie ticket. The winning number was ${winningNumber}.`;
+                    return;
+                } else {
+                    errorMessage.textContent = `Sorry, you did not win this time. The winning number was ${winningNumber}.`;
+                    return;
+                }
+            }
+        }
+
+        // Function that clears all fields by clicking the reset button
+        function clearForm() {
+            // Reset all form fields
+            document.querySelector('form').reset();
+
+            // Clear error messages, if any
+            document.getElementById('errorMessage').textContent = '';
+            document.getElementById('winnerMessage').textContent = '';
+            document.getElementById('raffle').value = '';
+            
+            // Clear any validation errors in input fields
+            const inputs = document.querySelectorAll('input');
+            inputs.forEach(input => input.style.borderColor = ''); // Reset border color
+        }
+
+        function submitForm() {
+            // Show success alert
+            alert("Survey submitted successfully. Thank you for your feedback!");
+
+            // Clear the form after submission
+            // Reset the form fields
+            form.reset();
+        }
+
+        function clearForm() {
+            // Select the form element
+            const form = document.querySelector('form');
+
+            if (form) {
+                // Reset the form fields
+                form.reset();
+            }
+
+            // Clear error and winner messages
+            document.getElementById('winnerMessage').textContent = '';
+            document.getElementById('errorMessage').textContent = '';
+
+            // Focus on the first form field
+            const firstInput = document.querySelector('form input, form select, form textarea');
+            if (firstInput) {
+                firstInput.focus();
+            }
+
+            alert('Survey form cleared successfully.');
+        }
+
+    </script>
+</body>
+</html>
