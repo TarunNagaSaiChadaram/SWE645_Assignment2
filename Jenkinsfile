@@ -8,7 +8,7 @@ pipeline {
                     withCredentials([usernamePassword(credentialsId: 'DockerHub', usernameVariable: 'DOCKERHUB_USERNAME', passwordVariable: 'DOCKERHUB_PASSWORD')]) {
                         sh "docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD"
                     }
-                    sh "cd app && docker build -t tarunchadaram/maindockimg:${env.BUILD_ID} ."
+                    sh "docker build -t tarunchadaram/maindockimg:${env.BUILD_ID} ."
                 }
             }
         }
