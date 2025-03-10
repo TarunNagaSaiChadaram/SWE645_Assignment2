@@ -7,6 +7,7 @@ spec:
     app: webapp
   ports:
     - protocol: TCP
+      port: 80
       targetport: 80
       nodeport: 32345
   type: NodePort
