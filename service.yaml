@@ -4,10 +4,10 @@ metadata:
   name: webapp-service
 spec:
   selector:
-    app: webapp
+    app: hw2  
   ports:
     - protocol: TCP
       port: 80
-      targetport: 80
-      nodeport: 32345
+      targetPort: 8080 
+      nodePort: 32345
   type: NodePort
