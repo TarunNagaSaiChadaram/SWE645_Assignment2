@@ -14,6 +14,7 @@ spec:
     spec:
       containers:
       - name: hw2-container
-        image: tarunchadaram/maindockimg:latest
+        image: IMAGE_NAME  
+        imagePullPolicy: Always
         ports:
         - containerPort: 8080
